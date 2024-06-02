@@ -60,4 +60,4 @@ class RegisterClient(BasePage):
         # self.utility.check()
         #self.note.fill() -> textarea
         self.submit.click_by_name()
-        self.page.pause()
+        # self.page.pause()
