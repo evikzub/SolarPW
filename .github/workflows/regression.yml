@@ -30,5 +30,11 @@ jobs:
       run: |
         python -m pip install --upgrade pip -r requirements.txt
         playwright install --with-deps chromium
+    - name: 'Session store'
+      uses: actions/upload-artifact@v4
+      with:
+        name: data
+        path: data/admin_session.txt
+        retention-days: 5
     - name: Run the tests
       run: pytest
