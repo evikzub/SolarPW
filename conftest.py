@@ -51,7 +51,7 @@ def admin_login(browser: Browser):
             page.goto(ADMIN_URL)
             # print(f" {page.url} : {ADMIN_URL}")
             # Check if session is valid
-            if len(session) > 0 and page.url == ADMIN_URL:
+            if page.url == ADMIN_URL:
                 print(">>> Set admin session <<<")
                 set_admin_session(session)
             else:
