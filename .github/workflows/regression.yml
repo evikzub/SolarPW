@@ -20,7 +20,7 @@ jobs:
       ADMIN_LOGIN: ${{ secrets.ADMIN_LOGIN }}
       ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
       TEST_USERS: ${{ secrets.TEST_USERS }}
-      # DATA_FILE: ${{ github.workspace }}/data
+      # DATA_FILE: {{ github.workspace }}/data
 
     steps:
     - uses: actions/checkout@v4

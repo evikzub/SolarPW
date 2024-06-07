@@ -1,4 +1,4 @@
-from os import environ, path
+from os import environ, path, makedirs
 
 BASE_URL = environ.get("BASE_URL")
 assert BASE_URL, "BASE_URL is not set"
@@ -30,8 +30,10 @@ def get_header(session: str) -> dict:
 DATA_FILE = environ.get("DATA_FILE", path.join(path.dirname(__file__), "data"))
 ADMIN_SESSION_FILE = path.join(DATA_FILE, "admin_session.txt")
 
-
 def store_cookie(key: str):
+    if not path.exists(ADMIN_SESSION_FILE):
+        # Create the directory if it doesn't exist
+        makedirs(path.dirname(ADMIN_SESSION_FILE), exist_ok=True)
     with open(ADMIN_SESSION_FILE, "w") as f:
         f.write(key)
 
