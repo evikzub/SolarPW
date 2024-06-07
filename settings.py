@@ -3,6 +3,9 @@ from os import environ, path
 BASE_URL = environ.get("BASE_URL")
 assert BASE_URL, "BASE_URL is not set"
 
+SMTP_URL = environ.get("SMTP_URL")
+assert BASE_URL, "SMTP_URL is not set"
+
 ADMIN_LOGIN = environ.get("ADMIN_LOGIN")
 assert ADMIN_LOGIN, "ADMIN_LOGIN is not set"
 
@@ -24,7 +27,8 @@ def get_header(session: str) -> dict:
     return {"cookie": f"residential_energy_partners_session={session}"}
 
 
-ADMIN_SESSION_FILE = path.join(path.dirname(__file__), "data", "admin_session.txt")
+DATA_FILE = environ.get("DATA_FILE", path.join(path.dirname(__file__), "data"))
+ADMIN_SESSION_FILE = path.join(DATA_FILE, "admin_session.txt")
 
 
 def store_cookie(key: str):

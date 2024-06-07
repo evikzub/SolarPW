@@ -129,3 +129,45 @@ _tariff = {
 }
 
 registration_tariff = RegistrationTariff.model_validate(_tariff)
+
+class RegistrationStripe(BaseModel):
+    card: BaseEntity
+    expiry: BaseEntity
+    cvc: BaseEntity
+    name: BaseEntity
+    country: BaseEntity
+    zip: BaseEntity
+    submit: BaseEntity
+    
+_stripe = {
+    "card": {
+        "locator": "input[id='cardNumber']",
+        "name": "4242 4242 4242 4242"
+    },
+    "expiry": {
+        "locator": "input[id='cardExpiry']",
+        "name": "12 / 25"
+    },
+    "cvc": {
+        "locator": "input[id='cardCvc']",
+        "name": "111"
+    },
+    "name": {
+        "locator": "input[id='billingName']",
+        "name": "Joe Doe"
+    },
+    "country": {
+        "locator": "select[id='billingCountry']",
+        "name": "US"
+    },
+    "zip": {
+        "locator": "input[id='billingPostalCode']",
+        "name": "Joe Doe"
+    },
+    "submit": {
+        "locator": "button[test_id='hosted-payment-submit-button']",
+        "name": "Joe Doe"
+    },
+}
+
+registration_stripe = RegistrationStripe.model_validate(_stripe)

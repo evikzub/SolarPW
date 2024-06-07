@@ -7,7 +7,7 @@ from pages.register import RegisterClient
 class TestRegistration:
     
     @pytest.mark.skip(reason="no way of currently testing this")
-    def test_client_register(self, default_page: Page):
+    def test_client_registration_with_email(self, default_page: Page):
         # Given the Customer is on the registration page
         rc = RegisterClient(default_page)
         # When the Customer fills in their name, address, email, and phone number
@@ -25,9 +25,19 @@ class TestRegistration:
         # And clicks on the "Next" button
         # Then the Customer should proceed to the next step
 
-'''
-When the Customer clicks on the "Subscribe" button
-Then the Customer should be successfully registered in the application
-And a confirmation message should be displayed
-And the Customer should be redirected to their dashboard or a success page
-'''
+    '''
+    When the Customer clicks on the "Subscribe" button
+    Then the Customer should be successfully registered in the application
+    And a confirmation message should be displayed
+    And the Customer should be redirected to their dashboard or a success page
+    '''
+
+    def test_client_registration_with_consultant(self, default_page: Page):
+        rc = RegisterClient(default_page)
+        rc.client_info('System contractor')
+        rc.client_tariff()
+        rc.terms_and_conditions()
+        rc.price_selection()
+        rc.subscription()
+        default_page.pause()
+

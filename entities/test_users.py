@@ -27,7 +27,7 @@ class TestUsers(BaseModel):
     @property
     def get_activated(self) -> UserEntity:
         user = [user for user in self.users if user.user_type == UserType.activated][0]
-        user.first_name = "Jane"
+        # user.first_name = "Jane"
         return user
 
 
